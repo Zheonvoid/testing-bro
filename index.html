@@ -7,7 +7,8 @@
 <style>
 *{box-sizing:border-box;margin:0}
 :root{--bg:#050506;--fg:#f5f5f7;--mut:#9a9aa6;--card:rgba(255,255,255,.055);--bd:rgba(255,255,255,.13);--ac:#fff;--acf:#000;--gl:rgba(255,255,255,.14);--gd:rgba(255,255,255,.06);--fs:1}
-[data-theme=light]{--bg:#ffffff;--fg:#0b0b12;--mut:#5c5c66;--card:rgba(0,0,0,.035);--bd:rgba(0,0,0,.14);--ac:#0b0b12;--acf:#fff;--gl:rgba(0,0,0,.08);--gd:rgba(0,0,0,.07)}
+[data-theme=light]{--bg:#e9ecf2;--fg:#0b0b12;--mut:#53536a;--card:rgba(255,255,255,.66);--bd:rgba(0,0,0,.14);--ac:#0b0b12;--acf:#fff;--gl:rgba(0,0,0,.08);--gd:rgba(0,0,0,.07)}
+[data-theme=contrast]{--bg:#000;--fg:#ffe600;--mut:#fff;--card:#000;--bd:#ffe600;--ac:#ffe600;--acf:#000;--gl:rgba(255,230,0,.2);--gd:rgba(255,230,0,.12)}
 html{scroll-behavior:smooth;font-size:calc(100%*var(--fs))}
 body{background:var(--bg);color:var(--fg);font:1rem/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:background .6s,color .6s;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(var(--gd) 1px,transparent 1px) 0 0/56px 56px,linear-gradient(90deg,var(--gd) 1px,transparent 1px) 0 0/56px 56px;mask:radial-gradient(ellipse at 50% 15%,#000,transparent 72%)}
@@ -15,13 +16,14 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:li
 main,footer{position:relative;z-index:1}
 a{color:inherit}
 :focus-visible{outline:3px solid #4da3ff;outline-offset:3px}
+[data-theme=contrast] :focus-visible{outline-color:#fff}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:fixed;left:8px;top:-70px;z-index:9}.skip:focus{top:8px}
 #pg{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--ac);transform-origin:0 50%;scale:0 1;z-index:7}
 header{position:fixed;top:12px;left:50%;translate:-50% 0;width:min(1120px,94%);z-index:6;display:flex;align-items:center;gap:.7rem;padding:.5rem .8rem;border:1px solid var(--bd);border-radius:999px;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .lg{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:700;margin-right:auto}
 nav{display:flex;gap:1.1rem;margin-right:auto}nav a{text-decoration:none;color:var(--mut);font-size:.92rem}nav a:hover{color:var(--fg)}
-.ctl{display:flex;gap:.4rem}#mb{display:none}
+.ctl{display:flex;gap:.4rem}
 .b{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:999px;padding:.45rem .9rem;font:inherit;font-size:.92rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:translate .25s,background .25s}
 .b:hover{translate:0 -2px}
 .p,.chip[aria-pressed=true]{background:var(--ac);color:var(--acf);border-color:var(--ac);font-weight:600}
@@ -57,18 +59,10 @@ summary::after{content:"+";float:right}details[open] summary::after{content:"–
 details[open] p{animation:fd .45s both;margin-top:.6rem}
 @keyframes fd{from{opacity:0;translate:0 -8px}}
 .faq{display:grid;gap:.7rem;max-width:760px}
-#hubungi{align-items:center;text-align:center}
-#ph{font-size:clamp(1.9rem,5.4vw,4rem);line-height:1.12;letter-spacing:-.03em;min-height:2.3em;display:flex;align-items:center;max-width:20ch}
-.ph{animation:ph 3.4s both}
-@keyframes ph{0%{opacity:0;translate:0 26px;filter:blur(12px)}14%,82%{opacity:1;translate:0 0;filter:none}100%{opacity:0;translate:0 -26px;filter:blur(12px)}}
-#hubungi .c{align-items:center;max-width:620px;width:100%}
-.big{font-size:clamp(1rem,1.5rem,1.6rem)}
-footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.2rem}
-.mega{font-size:clamp(2.6rem,13vw,11rem);font-weight:800;letter-spacing:-.05em;line-height:.95}
-#galeri{min-height:100svh;justify-content:space-between;padding-bottom:3rem}
+#kegiatan{min-height:100svh;justify-content:space-between;padding-bottom:3rem}
 .hd{display:grid;gap:1rem;justify-items:start}
-#stage{height:44svh;min-height:280px;touch-action:pan-y;cursor:grab}
-.det{max-width:900px;width:100%;margin:auto}.det b{color:var(--fg)}
+#stage{height:44svh;min-height:280px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}#stage.dg{cursor:grabbing}
+.det{max-width:900px;width:100%;margin:auto}.det b{color:var(--fg)}.det h3{font-size:1.4rem}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem}
 .sw{animation:sw .55s cubic-bezier(.2,.8,.2,1) both}
 @keyframes sw{from{opacity:0;translate:0 18px;filter:blur(6px)}}
@@ -78,7 +72,15 @@ footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap
 .ti{position:relative;border:1px solid var(--bd);background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:1.2rem;padding:1rem 1.3rem;display:flex;flex-direction:column}
 .ti::before{content:"";position:absolute;left:-1.7rem;top:1.25rem;width:.8rem;height:.8rem;border-radius:50%;background:var(--ac);border:3px solid var(--bg)}
 .ti b{font-size:1.1rem}
-@media(max-width:860px){nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;gap:.2rem;padding:.6rem;border:1px solid var(--bd);border-radius:1.4rem;background:var(--bg)}nav.open{display:flex}nav a{padding:.7rem .9rem;border-radius:.9rem;font-size:1rem;color:var(--fg)}nav a:hover{background:var(--card)}#mb{display:inline-flex}.bn,.sts,.pr{grid-template-columns:1fr}.w2{grid-column:auto}.st{min-height:10rem}}
+#hubungi{align-items:center;text-align:center}
+#ph{font-size:clamp(1.9rem,5.4vw,4rem);line-height:1.12;letter-spacing:-.03em;min-height:2.3em;display:flex;align-items:center;max-width:20ch}
+.ph{animation:ph 3.4s both}
+@keyframes ph{0%{opacity:0;translate:0 26px;filter:blur(12px)}14%,82%{opacity:1;translate:0 0;filter:none}100%{opacity:0;translate:0 -26px;filter:blur(12px)}}
+#hubungi .c{align-items:center;max-width:620px;width:100%}
+.big{font-size:clamp(1rem,1.5rem,1.6rem)}
+footer{padding:3rem 5vw 2.5rem;text-align:center}
+.mega{font-size:clamp(2.6rem,13vw,11rem);font-weight:800;letter-spacing:-.05em;line-height:.95}
+@media(max-width:860px){nav{display:none}.bn,.sts,.pr{grid-template-columns:1fr}.w2{grid-column:auto}.st{min-height:10rem}}
 @media(max-width:560px){header>.p,.lg b{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;translate:none;scale:1;filter:none}}
 </style>
@@ -88,12 +90,12 @@ footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap
 <div id="pg"></div><canvas id="gl" aria-hidden="true"></canvas><div id="lv" class="sr" aria-live="polite"></div>
 <header>
 <a class="lg" href="#beranda" aria-label="SMK Nusantara"><svg width="22" height="22" viewBox="-1 -1 2 2" aria-hidden="true"><path d="M0-1Q.16-.16 1 0Q.16.16 0 1Q-.16.16-1 0Q-.16-.16 0-1Z" fill="currentColor"/></svg><b>SMK Nusantara</b></a>
-<nav id="nv" aria-label="Menu"><a href="#layanan" data-i="nLay"></a><a href="#prestasi" data-i="nPre"></a><a href="#jurusan" data-i="nJur"></a><a href="#galeri" data-i="nKeg"></a><a href="#faq" data-i="nFaq"></a><a href="#hubungi" data-i="nHub"></a></nav>
+<nav aria-label="Menu"><a href="#layanan" data-i="nLay"></a><a href="#jurusan" data-i="nJur"></a><a href="#prestasi" data-i="nPre"></a><a href="#kegiatan" data-i="nKeg"></a><a href="#faq" data-i="nFaq"></a><a href="#hubungi" data-i="nHub"></a></nav>
 <div class="ctl">
 <button class="b" id="tb" data-a="aT">◐</button>
 <button class="b" id="lb" data-a="aL">EN</button>
 <button class="b" id="fb" data-a="aF">A+</button>
-<button class="b" id="mb" aria-expanded="false" aria-controls="nv" data-a="aM">☰</button>
+<button class="b" id="rb" aria-pressed="false" data-a="aR">🔊</button>
 </div>
 <a class="b p" href="#hubungi" data-i="nDaf"></a>
 </header>
@@ -139,20 +141,20 @@ footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap
 </div>
 </section>
 
-<section id="galeri">
-<div class="hd"><span class="pill rv" data-i="nKeg"></span><h2 class="g rv" style="--d:1" data-i="gH"></h2><p class="mut rv" style="--d:2" data-i="gP"></p></div>
+<section id="kegiatan">
+<div class="hd"><span class="pill rv" data-i="nKeg"></span><h2 class="g rv" style="--d:1" data-i="kH"></h2><p class="mut rv" style="--d:2" data-i="kP"></p></div>
 <div id="stage" aria-hidden="true"></div>
 <div class="c det rv">
 <div class="chips" id="chips" role="group" data-a="aPick"></div>
 <div id="dt" aria-live="polite" aria-atomic="true"><h3 id="dT"></h3><p class="mut"><span data-i="lc"></span>: <b id="dK"></b></p><p class="mut"><span data-i="lw"></span>: <b id="dW"></b></p><p id="dD"></p></div>
-<div class="row"><button class="b" id="pv" data-i="prev"></button><button class="b" id="nx" data-i="next"></button></div>
+<div class="row"><button class="b" id="pv" data-i="prev"></button><button class="b" id="pz" aria-pressed="false"></button><button class="b" id="nx" data-i="next"></button></div>
 </div>
 </section>
 
 <section id="jadwal">
 <span class="pill rv" data-i="nJad"></span>
-<h2 class="g rv" style="--d:1" data-i="kH"></h2>
-<p class="mut rv" style="--d:2" data-i="kP"></p>
+<h2 class="g rv" style="--d:1" data-i="kjH"></h2>
+<p class="mut rv" style="--d:2" data-i="kjP"></p>
 <ol class="tl">
 <li class="ti rv"><b data-i="mo1"></b><span class="mut" data-i="ev1"></span></li>
 <li class="ti rv"><b data-i="mo2"></b><span class="mut" data-i="ev2"></span></li>
@@ -161,6 +163,7 @@ footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap
 <li class="ti rv"><b data-i="mo5"></b><span class="mut" data-i="ev5"></span></li>
 <li class="ti rv"><b data-i="mo6"></b><span class="mut" data-i="ev6"></span></li>
 </ol>
+<div class="c rv" style="max-width:760px"><h3 data-i="xH"></h3><div class="row"><a class="b p" href="#hubungi" data-i="xB"></a></div></div>
 </section>
 
 <section id="faq">
@@ -181,55 +184,67 @@ footer{padding:3rem 5vw 2.5rem;text-align:center}.fn{display:flex;flex-wrap:wrap
 </section>
 </main>
 
-<footer><div class="fn" role="navigation" aria-label="Footer"><a class="b" href="#layanan" data-i="nLay"></a><a class="b" href="#prestasi" data-i="nPre"></a><a class="b" href="#jurusan" data-i="nJur"></a><a class="b" href="#galeri" data-i="nKeg"></a><a class="b" href="#jadwal" data-i="nJad"></a><a class="b" href="#faq" data-i="nFaq"></a><a class="b" href="#hubungi" data-i="nHub"></a><a class="b p" href="#beranda" data-i="top"></a></div><div class="mega g" aria-hidden="true">SMK NUSANTARA</div><p class="mut" style="margin:1rem auto 0" data-i="ft"></p></footer>
+<footer><div class="mega g" aria-hidden="true">SMK NUSANTARA</div><p class="mut" style="margin:1rem auto 0" data-i="ft"></p></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-const T={id:{aM:"Menu",top:"Kembali ke atas",skip:"Lompat ke konten utama",nLay:"Layanan",nJur:"Jurusan",nPre:"Prestasi",nFaq:"FAQ",nKeg:"Kegiatan",nJad:"Jadwal",aPick:"Pilih kegiatan",gH:"Putar, geser, lalu pilih kegiatan",gP:"Geser area 3D, tekan panah keyboard, atau pilih dari daftar di bawah.",prev:"Sebelumnya",next:"Berikutnya",lc:"Kategori",lw:"Jadwal",kH:"Jadwal kegiatan sepanjang tahun",kP:"Ini contoh jadwal. Tanggal pasti diumumkan oleh sekolah.",mo1:"Juli",mo2:"Agustus",mo3:"Oktober",mo4:"November",mo5:"Desember",mo6:"Maret",ev1:"Masa pengenalan lingkungan sekolah",ev2:"Lomba kemerdekaan dan upacara",ev3:"Hackathon sekolah",ev4:"Pekan olahraga antar kelas",ev5:"Pameran karya siswa",ev6:"Kunjungan industri dan PKL",nHub:"Hubungi Kami",nDaf:"Daftar",aT:"Ganti warna latar",aL:"Ganti bahasa ke Inggris",aF:"Ubah ukuran huruf",badge:"Pendaftaran siswa baru dibuka",h1:"Wujudkan masa depan digitalmu",sub:"SMK Nusantara adalah sekolah vokasi berbasis teknologi. Layanan kami mempertemukan siswa, orang tua, dan industri di satu tempat.",c1:"Mulai Daftar",c2:"Lihat Jurusan",lH:"Layanan sekolah yang benar-benar membantu",lP:"Dari mendaftar sampai bekerja, setiap langkah ada pendampingnya.",s1t:"Pendaftaran online",s1p:"Isi formulir dari rumah, unggah berkas, dan pantau status kapan saja.",s2t:"Lab dan fasilitas",s2p:"Lab komputer, studio multimedia, dan jaringan berstandar industri.",s3t:"PKL dan bursa kerja",s3p:"Praktik kerja di industri dan penyaluran lulusan ke perusahaan mitra.",s4t:"Bimbingan dan beasiswa",s4p:"Konseling karier, pendampingan belajar, dan beasiswa prestasi.",pH:"Bukti nyata yang bisa kamu percaya",p1:"lulusan langsung bekerja atau kuliah",p2:"mitra industri",p3:"prestasi lomba tingkat daerah sampai nasional",jH:"Pilih jurusan sesuai potensimu",pop:"Paling diminati",m1t:"Teknik Jaringan Komputer dan Telekomunikasi",m1a:"Konfigurasi server dan routing",m1b:"Dasar keamanan siber",m2t:"Pengembangan Perangkat Lunak dan Gim",m2a:"Pemrograman web dan mobile",m2b:"Pembuatan gim",m3t:"Desain Komunikasi Visual",m3a:"Desain UI dan UX",m3b:"Animasi dan video",fH:"Pertanyaan yang sering diajukan",q1:"Bagaimana cara mendaftar?",a1:"Buka tautan pendaftaran di bagian Hubungi Kami, isi formulir, lalu unggah berkas yang diminta.",q2:"Apakah ada beasiswa?",a2:"Ada. Beasiswa prestasi dan bantuan biaya tersedia. Syaratnya ada di formulir pendaftaran.",q3:"Kegiatan apa saja yang ada di sekolah?",a3:"Ada hackathon, robotik, pramuka, olahraga, band, dan kunjungan industri. Lihat bagian Kegiatan di halaman ini.",hH:"Hubungi Kami",ph:["Cari sekolah jurusan IT?","Atau pengen memaksimalkan potensi siswanya?","SMK Nusantara solusinya!","Link pendaftaran ada di bagian Hubungi Kami!"],reg:"Buka link pendaftaran",ct:"Telepon dan WhatsApp: (021) 000-0000. Email: info@smknusantara.example",ft:"© 2026 SMK Nusantara. Semua hak dilindungi.",th:["Hitam","Putih"],tm:"Tema",mq:["Software house","Penyedia internet","Studio kreatif","Startup teknologi","Perbankan","Manufaktur"]},
-en:{aM:"Menu",top:"Back to top",skip:"Skip to main content",nLay:"Services",nJur:"Majors",nPre:"Results",nFaq:"FAQ",nKeg:"Activities",nJad:"Schedule",aPick:"Choose an activity",gH:"Rotate, swipe, then pick an activity",gP:"Swipe the 3D area, press the arrow keys, or choose from the list below.",prev:"Previous",next:"Next",lc:"Category",lw:"Schedule",kH:"Activities through the year",kP:"This is a sample schedule. The school announces the exact dates.",mo1:"July",mo2:"August",mo3:"October",mo4:"November",mo5:"December",mo6:"March",ev1:"School orientation week",ev2:"Independence Day contests and ceremony",ev3:"School hackathon",ev4:"Inter-class sports week",ev5:"Student project expo",ev6:"Industry visits and internships",nHub:"Contact Us",nDaf:"Enroll",aT:"Change background theme",aL:"Switch language to Indonesian",aF:"Change text size",badge:"New student enrollment is open",h1:"Build your digital future",sub:"SMK Nusantara is a technology-driven vocational school. Our services bring students, parents and industry together in one place.",c1:"Start Enrolling",c2:"Explore Majors",lH:"School services that truly help",lP:"From enrolling to getting hired, every step has someone beside you.",s1t:"Online enrollment",s1p:"Fill in the form at home, upload documents and track your status anytime.",s2t:"Labs and facilities",s2p:"Computer labs, a multimedia studio and industry-grade networking.",s3t:"Internships and career center",s3p:"Workplace training in industry and job placement with partner companies.",s4t:"Counseling and scholarships",s4p:"Career counseling, study mentoring and merit scholarships.",pH:"Real results you can trust",p1:"of graduates go straight to work or university",p2:"industry partners",p3:"competition awards from regional to national level",jH:"Pick the major that fits your potential",pop:"Most popular",m1t:"Computer Networks and Telecommunications",m1a:"Server configuration and routing",m1b:"Cybersecurity basics",m2t:"Software and Game Development",m2a:"Web and mobile programming",m2b:"Game making",m3t:"Visual Communication Design",m3a:"UI and UX design",m3b:"Animation and video",fH:"Frequently asked questions",q1:"How do I enroll?",a1:"Open the enrollment link in Contact Us, fill in the form and upload the requested documents.",q2:"Are scholarships available?",a2:"Yes. Merit scholarships and fee assistance are offered. See the requirements in the enrollment form.",q3:"What activities does the school offer?",a3:"There are hackathons, robotics, scouts, sports, band and industry visits. See the Activities section on this page.",hH:"Contact Us",ph:["Looking for an IT-major school?","Or want to unlock your students' full potential?","SMK Nusantara is the answer!","The enrollment link is in Contact Us!"],reg:"Open enrollment link",ct:"Phone and WhatsApp: (021) 000-0000. Email: info@smknusantara.example",ft:"© 2026 SMK Nusantara. All rights reserved.",th:["Black","White"],tm:"Theme",mq:["Software houses","Internet providers","Creative studios","Tech startups","Banking","Manufacturing"]}};
+const T={id:{skip:"Lompat ke konten utama",nLay:"Layanan",nJur:"Jurusan",nPre:"Prestasi",nFaq:"FAQ",nHub:"Hubungi Kami",nKeg:"Kegiatan",nJad:"Jadwal",nDaf:"Daftar",aT:"Ganti warna latar",aL:"Ganti bahasa ke Inggris",aF:"Ubah ukuran huruf",aR:"Mode baca suara",badge:"Pendaftaran siswa baru dibuka",h1:"Wujudkan masa depan digitalmu",sub:"SMK Nusantara adalah sekolah vokasi berbasis teknologi. Layanan kami mempertemukan siswa, orang tua, dan industri di satu tempat.",c1:"Mulai Daftar",c2:"Lihat Jurusan",lH:"Layanan sekolah yang benar-benar membantu",lP:"Dari mendaftar sampai bekerja, setiap langkah ada pendampingnya.",s1t:"Pendaftaran online",s1p:"Isi formulir dari rumah, unggah berkas, dan pantau status kapan saja.",s2t:"Lab dan fasilitas",s2p:"Lab komputer, studio multimedia, dan jaringan berstandar industri.",s3t:"PKL dan bursa kerja",s3p:"Praktik kerja di industri dan penyaluran lulusan ke perusahaan mitra.",s4t:"Bimbingan dan beasiswa",s4p:"Konseling karier, pendampingan belajar, dan beasiswa prestasi.",pH:"Bukti nyata yang bisa kamu percaya",p1:"lulusan langsung bekerja atau kuliah",p2:"mitra industri",p3:"prestasi lomba tingkat daerah sampai nasional",jH:"Pilih jurusan sesuai potensimu",pop:"Paling diminati",m1t:"Teknik Jaringan Komputer dan Telekomunikasi",m1a:"Konfigurasi server dan routing",m1b:"Dasar keamanan siber",m2t:"Pengembangan Perangkat Lunak dan Gim",m2a:"Pemrograman web dan mobile",m2b:"Pembuatan gim",m3t:"Desain Komunikasi Visual",m3a:"Desain UI dan UX",m3b:"Animasi dan video",fH:"Pertanyaan yang sering diajukan",q1:"Bagaimana cara mendaftar?",a1:"Buka tautan pendaftaran di bagian Hubungi Kami, isi formulir, lalu unggah berkas yang diminta.",q2:"Apakah ada beasiswa?",a2:"Ada. Beasiswa prestasi dan bantuan biaya tersedia. Syaratnya ada di formulir pendaftaran.",q3:"Apakah website ini bisa dipakai siswa tunanetra?",a3:"Bisa. Aktifkan Mode baca suara untuk mendengar isi halaman. Website ini juga mendukung pembaca layar, navigasi keyboard, huruf besar, dan tema kontras tinggi.",hH:"Hubungi Kami",ph:["Cari sekolah jurusan IT?","Atau pengen memaksimalkan potensi siswanya?","SMK Nusantara solusinya!","Link pendaftaran ada di bagian Hubungi Kami!"],reg:"Buka link pendaftaran",ct:"Telepon dan WhatsApp: (021) 000-0000. Email: info@smknusantara.example",ft:"© 2026 SMK Nusantara. Semua hak dilindungi.",th:["Gelap","Terang","Kontras tinggi"],tm:"Tema",rdOn:"Mode baca suara aktif. Arahkan kursor atau tekan Tab ke teks untuk mendengarnya. Kegiatan yang kamu pilih di galeri akan dibacakan.",rdOff:"Mode baca suara mati.",mq:["Software house","Penyedia internet","Studio kreatif","Startup teknologi","Perbankan","Manufaktur"],aPick:"Pilih kegiatan",kH:"Sekolah yang selalu hidup",kP:"Dari lomba coding sampai futsal, dari robot sampai panggung seni. Geser galeri 3D, tekan panah keyboard, atau pilih dari daftar di bawah untuk melihat detailnya.",prev:"Sebelumnya",next:"Berikutnya",lc:"Kategori",lw:"Jadwal",kjH:"Jadwal kegiatan sepanjang tahun",kjP:"Ini contoh jadwal. Tanggal pasti diumumkan oleh sekolah.",mo1:"Juli",ev1:"Masa pengenalan lingkungan sekolah",mo2:"Agustus",ev2:"Lomba kemerdekaan dan upacara",mo3:"Oktober",ev3:"Hackathon sekolah",mo4:"November",ev4:"Pekan olahraga antar kelas",mo5:"Desember",ev5:"Pameran karya siswa",mo6:"Maret",ev6:"Kunjungan industri dan PKL",xH:"Mau ikut kegiatan? Daftar dulu.",xB:"Buka Hubungi Kami",pause:"Jeda",play:"Putar"},
+en:{skip:"Skip to main content",nLay:"Services",nJur:"Majors",nPre:"Results",nFaq:"FAQ",nHub:"Contact Us",nKeg:"Activities",nJad:"Schedule",nDaf:"Enroll",aT:"Change background theme",aL:"Switch language to Indonesian",aF:"Change text size",aR:"Voice reading mode",badge:"New student enrollment is open",h1:"Build your digital future",sub:"SMK Nusantara is a technology-driven vocational school. Our services bring students, parents and industry together in one place.",c1:"Start Enrolling",c2:"Explore Majors",lH:"School services that truly help",lP:"From enrolling to getting hired, every step has someone beside you.",s1t:"Online enrollment",s1p:"Fill in the form at home, upload documents and track your status anytime.",s2t:"Labs and facilities",s2p:"Computer labs, a multimedia studio and industry-grade networking.",s3t:"Internships and career center",s3p:"Workplace training in industry and job placement with partner companies.",s4t:"Counseling and scholarships",s4p:"Career counseling, study mentoring and merit scholarships.",pH:"Real results you can trust",p1:"of graduates go straight to work or university",p2:"industry partners",p3:"competition awards from regional to national level",jH:"Pick the major that fits your potential",pop:"Most popular",m1t:"Computer Networks and Telecommunications",m1a:"Server configuration and routing",m1b:"Cybersecurity basics",m2t:"Software and Game Development",m2a:"Web and mobile programming",m2b:"Game making",m3t:"Visual Communication Design",m3a:"UI and UX design",m3b:"Animation and video",fH:"Frequently asked questions",q1:"How do I enroll?",a1:"Open the enrollment link in Contact Us, fill in the form and upload the requested documents.",q2:"Are scholarships available?",a2:"Yes. Merit scholarships and fee assistance are offered. See the requirements in the enrollment form.",q3:"Can blind students use this website?",a3:"Yes. Turn on Voice reading mode to hear the page. The site also supports screen readers, keyboard navigation, larger text and a high-contrast theme.",hH:"Contact Us",ph:["Looking for an IT-major school?","Or want to unlock your students' full potential?","SMK Nusantara is the answer!","The enrollment link is in Contact Us!"],reg:"Open enrollment link",ct:"Phone and WhatsApp: (021) 000-0000. Email: info@smknusantara.example",ft:"© 2026 SMK Nusantara. All rights reserved.",th:["Dark","Light","High contrast"],tm:"Theme",rdOn:"Voice reading mode on. Hover or press Tab to any text to hear it. The activity you pick in the gallery will be read aloud.",rdOff:"Voice reading mode off.",mq:["Software houses","Internet providers","Creative studios","Tech startups","Banking","Manufacturing"],aPick:"Choose an activity",kH:"A school that is always alive",kP:"From coding contests to futsal, from robots to the art stage. Swipe the 3D gallery, press the arrow keys, or choose from the list below to see the details.",prev:"Previous",next:"Next",lc:"Category",lw:"Schedule",kjH:"Activities through the year",kjP:"This is a sample schedule. The school announces the exact dates.",mo1:"July",ev1:"School orientation week",mo2:"August",ev2:"Independence Day contests and ceremony",mo3:"October",ev3:"School hackathon",mo4:"November",ev4:"Inter-class sports week",mo5:"December",ev5:"Student project expo",mo6:"March",ev6:"Industry visits and internships",xH:"Want to join? Enroll first.",xB:"Open Contact Us",pause:"Pause",play:"Play"}};
 const A={id:[["Hackathon dan lomba coding","Kompetisi","Setiap semester","Tim siswa membangun aplikasi dalam 24 jam, didampingi mentor dari industri."],["Robotik dan IoT","Ekstrakurikuler","Selasa dan Kamis, 15.30","Merakit robot, sensor, dan perangkat pintar, lalu ikut kontes tingkat daerah."],["Pramuka dan kepemimpinan","Ekstrakurikuler","Jumat, 15.00","Melatih kerja sama, kemandirian, dan kepemimpinan lewat kemah dan kegiatan lapangan."],["Futsal dan basket","Olahraga","Rabu dan Sabtu, 16.00","Latihan rutin dan pertandingan antar kelas maupun antar sekolah."],["Band dan studio kreatif","Seni","Senin, 15.30","Bermusik, membuat konten video, dan tampil di panggung acara sekolah."],["Kunjungan industri dan pameran karya","Industri","Setiap akhir tahun ajaran","Mengunjungi perusahaan mitra dan memamerkan proyek siswa kepada orang tua dan industri."]],
 en:[["Hackathon and coding contests","Competition","Every semester","Student teams build an app in 24 hours, guided by mentors from industry."],["Robotics and IoT","Extracurricular","Tue and Thu, 3:30 pm","Build robots, sensors and smart devices, then compete in regional contests."],["Scouts and leadership","Extracurricular","Fri, 3:00 pm","Practice teamwork, independence and leadership through camps and field activities."],["Futsal and basketball","Sports","Wed and Sat, 4:00 pm","Regular training and matches between classes and between schools."],["Band and creative studio","Arts","Mon, 3:30 pm","Play music, make video content and perform on the school stage."],["Industry visits and project expo","Industry","End of every school year","Visit partner companies and show student projects to parents and industry."]]};
 const EM=['💻','🤖','⛺','⚽','🎸','🏭'];
-function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
-
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],D=document.documentElement;
 const LS=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
-const TH=['dark','light'];
-let lang=LS('l')||'id',th=TH.includes(LS('t'))?LS('t'):'dark',fs=1,pi=0,gt=()=>{},idx=0,sel=0,last=0,gT=0,cc=1.5,rp=()=>{},pick=()=>{};
-function note(t){$('#lv').textContent=t}
-function tick(){const p=$('#ph');p.textContent=T[lang].ph[pi%4];p.classList.remove('ph');void p.offsetWidth;p.classList.add('ph')}
-const ch=$('#chips');EM.forEach((e,i)=>{const b=document.createElement('button');b.className='b chip';b.onclick=()=>go(i,1);ch.append(b)});
+const TH=['dark','light','contrast'];
+let lang=LS('l')||'id',th=LS('t')||'dark',fs=1,rd=false,pi=0,cur='',gt=()=>{},rp=()=>{},pick=()=>{},idx=0,sel=0,last=0,gT=0,cc=1.5,sf=.44,rS=.8,gv=0,ang=0,pz=0,drag=0;
+function say(t){if(!('speechSynthesis'in window))return;speechSynthesis.cancel();if(!t)return;const u=new SpeechSynthesisUtterance(t);u.lang=lang=='id'?'id-ID':'en-US';speechSynthesis.speak(u)}
+function note(t){$('#lv').textContent=t;if(rd)say(t)}
+const ch=$('#chips'),stg=$('#stage'),tl=$('.tl');
+EM.forEach((e,i)=>{const b=document.createElement('button');b.className='b chip';b.onclick=()=>go(i,1);ch.append(b)});
 function fill(){const a=A[lang][sel];$$('.chip').forEach((b,i)=>{b.textContent=EM[i]+' '+A[lang][i][0];b.setAttribute('aria-pressed',i==sel)});$('#dT').textContent=a[0];$('#dK').textContent=a[1];$('#dW').textContent=a[2];$('#dD').textContent=a[3];const d=$('#dt');d.classList.remove('sw');void d.offsetWidth;d.classList.add('sw')}
-function go(i,u){idx+=((i-sel+9)%6)-3;sel=((idx%6)+6)%6;if(u)last=performance.now();fill()}
-function setLang(l){lang=l;LS('l',l);D.lang=l;const x=T[l];$$('[data-i]').forEach(e=>e.textContent=x[e.dataset.i]);$$('[data-a]').forEach(e=>e.setAttribute('aria-label',x[e.dataset.a]));$('#lb').textContent=l=='id'?'EN':'ID';$('#phsr').textContent=x.ph.join(' ');$('#mq').innerHTML=x.mq.map(s=>'<span>'+s+'</span>').join('').repeat(2);tick();fill();rp()}
+function go(i,u){idx+=((i-sel+9)%6)-3;ang=-idx*Math.PI/3;sel=((idx%6)+6)%6;if(u)last=performance.now();fill();if(u&&rd)say(A[lang][sel][0]+'. '+A[lang][sel][3])}
+function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+function tick(){const p=$('#ph');p.textContent=T[lang].ph[pi%4];p.classList.remove('ph');void p.offsetWidth;p.classList.add('ph')}
+function setLang(l){lang=l;LS('l',l);D.lang=l;const x=T[l];$$('[data-i]').forEach(e=>e.textContent=x[e.dataset.i]);$$('[data-a]').forEach(e=>e.setAttribute('aria-label',x[e.dataset.a]));$('#lb').textContent=l=='id'?'EN':'ID';$('#phsr').textContent=x.ph.join(' ');$('#mq').innerHTML=x.mq.map(s=>'<span>'+s+'</span>').join('').repeat(2);tick();fill();rp();pzl()}
 function setTheme(t,n){th=t;LS('t',t);D.dataset.theme=t;gt(t);if(n)note(T[lang].tm+': '+T[lang].th[TH.indexOf(t)])}
-$('#tb').onclick=()=>setTheme(TH[(TH.indexOf(th)+1)%TH.length],1);
+$('#tb').onclick=()=>setTheme(TH[(TH.indexOf(th)+1)%3],1);
 $('#lb').onclick=()=>{setLang(lang=='id'?'en':'id');note(lang=='id'?'Bahasa Indonesia':'English')};
 $('#fb').onclick=()=>{fs=fs>=1.4?1:+(fs+.2).toFixed(1);D.style.setProperty('--fs',fs)};
-$('#mb').onclick=()=>{const o=$('#nv').classList.toggle('open');$('#mb').setAttribute('aria-expanded',o);$('#mb').textContent=o?'✕':'☰'};
-$$('#nv a').forEach(a=>a.addEventListener('click',()=>{$('#nv').classList.remove('open');$('#mb').setAttribute('aria-expanded',false);$('#mb').textContent='☰'}));
-const KM={t:'#tb',l:'#lb',f:'#fb'};
-$('#pv').onclick=()=>go(sel-1,1);$('#nx').onclick=()=>go(sel+1,1);
+$('#rb').onclick=()=>{rd=!rd;$('#rb').setAttribute('aria-pressed',rd);if(rd)note(T[lang].rdOn);else{if('speechSynthesis'in window)speechSynthesis.cancel();$('#lv').textContent=T[lang].rdOff}};
+function pzl(){const b=$('#pz');b.textContent=T[lang][pz?'play':'pause'];b.setAttribute('aria-pressed',!!pz)}
+$('#pv').onclick=()=>go(sel-1,1);$('#nx').onclick=()=>go(sel+1,1);$('#pz').onclick=()=>{pz=pz?0:1;pzl()};
+const KM={t:'#tb',l:'#lb',r:'#rb',f:'#fb'};
 addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(e.altKey&&KM[k]){e.preventDefault();$(KM[k]).click();return}if(gT>.4&&!e.altKey&&(e.key=='ArrowRight'||e.key=='ArrowLeft'))go(sel+(e.key=='ArrowRight'?1:-1),1)});
+let ht;
+document.addEventListener('pointerover',e=>{if(!rd)return;const t=e.target.closest('h1,h2,h3,p,li,summary,.b');if(!t)return;clearTimeout(ht);ht=setTimeout(()=>say(t.innerText||t.getAttribute('aria-label')),350)});
+document.addEventListener('focusin',e=>{if(rd)say(e.target.innerText||e.target.getAttribute('aria-label'))});
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&rd&&e.target.id!=cur){cur=e.target.id;say(e.target.innerText)}}),{threshold:.6}).observe&&(()=>{const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&rd&&e.target.id!=cur){cur=e.target.id;say(e.target.innerText)}}),{threshold:.6});$$('main section').forEach(s=>so.observe(s))})();
 function cnt(el,on){const n=el.querySelector('.n'),to=+n.dataset.n,s=n.dataset.s;cancelAnimationFrame(n._r);if(!on){n.textContent='0'+s;return}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1400);n.textContent=Math.round(to*(1-Math.pow(1-k,3)))+s;if(k<1)n._r=requestAnimationFrame(f)})(t0)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting);if(e.target.classList.contains('st'))cnt(e.target,e.isIntersecting)}),{threshold:.18});
 $$('.rv').forEach(e=>io.observe(e));
-const st=$('#stage');let x0=0;
-st.addEventListener('pointerdown',e=>{x0=e.clientX});
-st.addEventListener('pointerup',e=>{const d=e.clientX-x0;if(Math.abs(d)>45)go(sel+(d<0?1:-1),1);else pick(e)});
-setInterval(()=>{if(gT>.5&&performance.now()-last>9000)go(sel+1)},5500);
-
+const ST=Math.PI/3,K=.0065;let a0=0,x0=0,xl=0,tl0=0,vx=0,moved=0;
+const setSel=n=>{if(n!==idx){idx=n;sel=((n%6)+6)%6;fill()}};
+stg.addEventListener('pointerdown',e=>{if(e.button>0)return;drag=1;moved=0;x0=xl=e.clientX;tl0=performance.now();vx=0;a0=ang;try{stg.setPointerCapture(e.pointerId)}catch(_){}D.style.userSelect='none';stg.classList.add('dg')});
+stg.addEventListener('pointermove',e=>{if(!drag)return;const now=performance.now(),dt=Math.max(1,now-tl0);vx=.75*vx+.25*((e.clientX-xl)/dt);xl=e.clientX;tl0=now;const dx=e.clientX-x0;if(Math.abs(dx)>6)moved=1;if(moved){ang=a0+dx*K;setSel(Math.round(-ang/ST))}});
+const endDrag=e=>{if(!drag)return;drag=0;D.style.userSelect='';stg.classList.remove('dg');
+if(!moved){if(e.type=='pointerup')pick(e);return}
+const n0=idx;setSel(Math.max(n0-3,Math.min(n0+3,Math.round(-(ang+vx*K*180)/ST))));ang=-idx*ST;last=performance.now();if(rd)say(A[lang][sel][0]+'. '+A[lang][sel][3])};
+stg.addEventListener('pointerup',endDrag);stg.addEventListener('pointercancel',endDrag);
+setInterval(()=>{if(!rd&&!pz&&!drag&&gT>.4&&performance.now()-last>6000)go(sel+1)},4200);
 $$('.t').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--ry',(x-.5)*14+'deg');c.style.setProperty('--rx',(.5-y)*14+'deg');c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});c.addEventListener('pointerleave',()=>{c.style.removeProperty('--rx');c.style.removeProperty('--ry')})});
 setInterval(()=>{pi++;tick()},3400);
 let sp=0,tg=0,mx=0,my=0;
-function onS(){const h=D.scrollHeight-innerHeight;tg=h>0?scrollY/h:0;$('#pg').style.scale=tg+' 1';const r=$('#galeri').getBoundingClientRect();cc=(r.top+r.height/2)/innerHeight;gT=Math.max(0,Math.min(1,1-Math.abs(cc-.5)*1.5));const tl=$('.tl'),q=tl.getBoundingClientRect();tl.style.setProperty('--p',Math.max(0,Math.min(1,(innerHeight*.65-q.top)/q.height)))}
+function onS(){const h=D.scrollHeight-innerHeight;tg=h>0?scrollY/h:0;$('#pg').style.scale=tg+' 1';
+const r=stg.getBoundingClientRect(),a=innerWidth/innerHeight;sf=r.height/innerHeight;cc=(r.top+r.height/2)/innerHeight;gT=Math.max(0,Math.min(1,1-Math.abs(cc-.5)*1.5));
+rS=Math.min(8.657*sf/(3.4+3.305*sf),5.65*a/(2.6+2.157*a),1.2);
+const q=tl.getBoundingClientRect();tl.style.setProperty('--p',Math.max(0,Math.min(1,(innerHeight*.65-q.top)/q.height)))}
 addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);onS();
 addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
 
 /* ---------- Three.js: adegan 3D ---------- */
 try{
 const R=new THREE.WebGLRenderer({canvas:$('#gl'),antialias:true,alpha:true});
-R.setPixelRatio(Math.min(devicePixelRatio,2));R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;
+let dpr=Math.min(devicePixelRatio,1.75);R.setPixelRatio(dpr);R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;
 const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,80);
 const E=new THREE.Scene();
 [[-6,4,3,0xffffff,5],[6,-2,2,0x7f95ff,4],[0,6,-4,0xffffff,6],[0,-5,4,0xffa070,3],[-5,-4,-3,0xffffff,2]].forEach(a=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(7,7),new THREE.MeshBasicMaterial({color:new THREE.Color(a[3]).multiplyScalar(a[4]),side:THREE.DoubleSide}));m.position.set(a[0],a[1],a[2]);m.lookAt(0,0,0);E.add(m)});
@@ -252,44 +267,49 @@ function add(m,x,y,z,s,v,rx){m.position.set(x,y,z);m.scale.setScalar(s);m.userDa
 const sg=starGeo();
 add(cap,3.1,0,.5,.95,.35,.35);cap.rotation.z=.15;
 add(new THREE.Mesh(sg,chrome),5.1,2.1,-1,1.5,.3);
+add(new THREE.Mesh(sg,chrome),1.7,2.4,-.5,.7,.4);
+add(new THREE.Mesh(sg,chrome),5.5,-2.3,0,.55,.5);
 add(new THREE.Mesh(new THREE.TorusKnotGeometry(.7,.22,160,24),chrome),-4.2,-4.4,0,1,.4);
 add(new THREE.Mesh(new THREE.IcosahedronGeometry(1,1),wire),4.2,-8.4,0,1.3,.3);
 add(new THREE.Mesh(new THREE.TorusGeometry(.9,.28,32,64),chrome),-4.2,-12.4,0,1,.35);
 add(new THREE.Mesh(new THREE.OctahedronGeometry(1,0),chrome),4.2,-16.4,0,1.1,.4);
 add(new THREE.Mesh(sg,chrome),-4.2,-20.4,0,1.6,.3);
 const cap2=cap.clone();add(cap2,0,-24.4,1,1.1,.4,.35);
-const lp=THREE.MathUtils.lerp;
-const cv=[],tx=[],pans=[],plates=[],ring=new THREE.Group();const rg=new THREE.Group();S.add(rg);rg.add(ring);
+const cv=[],tx=[],pans=[],plates=[],ring=new THREE.Group();S.add(ring);
 for(let i=0;i<6;i++){const c=document.createElement('canvas');c.width=512;c.height=680;cv.push(c);tx.push(new THREE.CanvasTexture(c));
 const g=new THREE.Group(),a=i*Math.PI/3,pl=new THREE.Mesh(new THREE.BoxGeometry(2.6,3.4,.1),chrome),fc=new THREE.Mesh(new THREE.PlaneGeometry(2.45,3.25),new THREE.MeshBasicMaterial({map:tx[i],transparent:true,toneMapped:false}));
 fc.position.z=.06;g.add(pl,fc);g.position.set(Math.sin(a)*4.2,0,Math.cos(a)*4.2);g.rotation.y=a;ring.add(g);pans.push(g);plates.push(pl)}
 const fl=new THREE.Mesh(new THREE.TorusGeometry(4.2,.035,16,160),chrome);fl.rotation.x=Math.PI/2;fl.position.y=-2.3;ring.add(fl);
 const fw=new THREE.Mesh(new THREE.TorusGeometry(5.6,.02,8,160),wire);fw.rotation.x=Math.PI/2;fw.position.y=-2.3;ring.add(fw);
-rp=()=>{const P={dark:['#1d1d27','#08080b','#f5f5f7','#9a9aa6'],light:['#ffffff','#e2e2e6','#0b0b12','#5c5c66']}[th];
+rp=()=>{const P={dark:['#1d1d27','#08080b','#f5f5f7','#9a9aa6'],light:['#ffffff','#d6dbe8','#0b0b12','#53536a'],contrast:['#000000','#000000','#ffe600','#ffffff']}[th];
 cv.forEach((c,i)=>{const x=c.getContext('2d'),a=A[lang][i],g=x.createLinearGradient(0,0,0,680);x.clearRect(0,0,512,680);g.addColorStop(0,P[0]);g.addColorStop(1,P[1]);x.fillStyle=g;rr(x,6,6,500,668,52);x.fill();x.strokeStyle=P[3];x.globalAlpha=.5;x.lineWidth=4;x.stroke();x.globalAlpha=1;x.textAlign='center';
 x.font='190px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';x.fillText(EM[i],256,290);
 x.fillStyle=P[2];x.font='700 46px system-ui,sans-serif';let ln='',y=410;for(const w of a[0].split(' ')){const s=ln?ln+' '+w:w;if(x.measureText(s).width>430&&ln){x.fillText(ln,256,y);y+=56;ln=w}else ln=s}x.fillText(ln,256,y);
 x.fillStyle=P[3];x.font='32px system-ui,sans-serif';x.fillText(a[1],256,630);tx[i].needsUpdate=true})};
 const RC=new THREE.Raycaster(),V=new THREE.Vector2();
 pick=e=>{V.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1));RC.setFromCamera(V,C);const h=RC.intersectObjects(plates)[0];if(h)go(plates.indexOf(h.object),1)};
+
 const N=1400,pa=new Float32Array(N*3);for(let i=0;i<N;i++){pa[i*3]=(Math.random()-.5)*28;pa[i*3+1]=4-Math.random()*34;pa[i*3+2]=(Math.random()-.5)*16-2}
 const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
 const Pt=new THREE.Points(pg,new THREE.PointsMaterial({size:.045,color:0xffffff,transparent:true,opacity:.8,depthWrite:false}));S.add(Pt);
-gt=t=>{const c={dark:0xffffff,light:0x111122}[t];Pt.material.color.set(c);wire.color.set(c);rp()};gt(th);
-let sx=1,gv=0;function rs(){R.setSize(innerWidth,innerHeight,false);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix();sx=Math.min(1,C.aspect/1.5)}
+gt=t=>{const c={dark:0xffffff,light:0x111122,contrast:0xffe600}[t];Pt.material.color.set(c);wire.color.set(c);chrome.color.set(t=='contrast'?0xffe600:0xffffff);rp()};gt(th);
+let sx=1;function rs(){R.setSize(innerWidth,innerHeight,false);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix();sx=Math.min(1,C.aspect/1.5)}
 addEventListener('resize',rs);rs();
-const clk=new THREE.Clock(),rm=matchMedia('(prefers-reduced-motion:reduce)').matches?0:1;
-(function loop(){requestAnimationFrame(loop);const t=clk.getElapsedTime();sp+=(tg-sp)*.07;
-C.position.set(mx*1.2,-sp*25-my*.6,11+gv*(2.2+(1-sx)*5));C.lookAt(mx*.4,-sp*25,0);
-gv+=(gT-gv)*.08;rg.position.y=-sp*25;rg.visible=Math.abs(cc-.5)<1.4;
-ring.position.set(0,(.5-cc)*7+Math.sin(t*.7)*.08*rm,0);ring.rotation.x=lp(.3,0,gv);ring.scale.setScalar(lp(.75,1,gv));
-ring.rotation.y+=(-idx*Math.PI/3-ring.rotation.y)*.08;
+let pt=performance.now()/1000,rvel=0,fa=0,fn=0;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches?0:1;
+(function loop(){requestAnimationFrame(loop);const now=performance.now()/1000,dt=Math.min(.05,Math.max(.001,now-pt));pt=now;const t=now;sp+=(tg-sp)*(1-Math.exp(-4.4*dt));gv+=(gT-gv)*(1-Math.exp(-5*dt));
+C.position.set(mx*1.2,-sp*25-my*.6,11);C.lookAt(mx*.4,-sp*25,0);
+props.forEach((m,i)=>{const u=m.userData;m.position.x=u.x*sx;m.position.y=u.y+Math.sin(t*.8+i)*.15*rm;m.rotation.y=t*u.v*rm+sp*6;m.rotation.x=u.rx+Math.sin(t*.6+i)*.2*rm;m.scale.setScalar(u.s*(1-.92*gv))});
+/* galeri 3D menempel pada area #stage; benda lain mengecil saat galeri tampil */
+ring.visible=gv>.01;W.visible=gv<.96;const gs=gv*gv*(3-2*gv);
+ring.position.set(mx*.4,-sp*25+(.5-cc)*9.1127+Math.sin(t*.7)*.08*rm,0);ring.rotation.x=.1;ring.scale.setScalar(Math.max(.001,rS*gs));
+{const om=drag?26:9,x=om*dt,e=1/(1+x+.48*x*x+.235*x*x*x),c=ring.rotation.y-ang,tp=(rvel+om*c)*dt;rvel=(rvel-om*tp)*e;ring.rotation.y=ang+(c+tp)*e}
 pans.forEach((g,i)=>{const f=Math.pow((Math.cos(i*Math.PI/3+ring.rotation.y)+1)/2,2);g.scale.setScalar(.78+.22*f);g.children[1].material.opacity=.4+.6*f});
-props.forEach((m,i)=>{const u=m.userData;m.scale.setScalar(u.s*(1-gv*.98));m.position.x=u.x*sx;m.position.y=u.y+Math.sin(t*.8+i)*.15*rm;m.rotation.y=t*u.v*rm+sp*6;m.rotation.x=u.rx+Math.sin(t*.6+i)*.2*rm});
-Pt.rotation.y=t*.02*rm+sp*.8;R.render(S,C)})();
-}catch(e){const g=$('#gl');g&&g.remove()}
+Pt.rotation.y=t*.02*rm+sp*.8;
+fa+=dt;if(++fn==60){const ms=fa/fn*1000;fa=fn=0;if(ms>26&&dpr>1){dpr=Math.max(1,dpr-.5);R.setPixelRatio(dpr);rs()}}
+R.render(S,C)})();
+}catch(e){const g=$('#gl');g&&g.remove();stg.style.display='none'}
 
 setLang(lang);setTheme(th);
 </script>
 </body>
-  </html>
+</html>

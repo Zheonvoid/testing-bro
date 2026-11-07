@@ -312,5 +312,192 @@ R.render(S,C)})();
 
 setLang(lang);setTheme(th);setMotion(!rm);
 </script>
+<style>
+#nusa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;font-size:.92rem;line-height:1.5}
+#nl{width:68px;height:68px;padding:0;justify-content:center;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#nl .face{width:100%;height:100%;pointer-events:none}
+.face{display:block;overflow:visible}
+.face .hd circle,.face .spk{fill:var(--ac)}
+.face .e{fill:var(--acf)}
+.face .br,.face .mo{fill:none;stroke:var(--acf);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.m-happy .mo,.m-wow .mo,.m-love .mo,.m-talk .mo{fill:var(--acf)}
+.hd{transform-box:fill-box;transform-origin:50% 100%;transition:rotate .3s}
+.m-think .hd{rotate:-6deg}.m-sorry .hd{rotate:4deg}
+.m-happy .hd,.m-wow .hd,.m-love .hd{animation:bn .5s}
+@keyframes bn{40%{translate:0 -7px}}
+.br{transform-box:fill-box;transform-origin:center;transition:transform .25s}
+.m-happy .br,.m-love .br{transform:translateY(-2px)}.m-wow .br{transform:translateY(-5px)}
+.m-think .bq{transform:translateY(-4px) rotate(-10deg)}
+.m-sorry .bl{transform:rotate(-16deg)}.m-sorry .bq{transform:rotate(16deg)}
+.ey{transform:translate(var(--ex,0px),var(--ey,0px));transition:transform .15s}
+.m-think .ey{transform:translate(-2px,-3px)}.m-listen .ey{transform:translate(0,3px)}
+.e{transform-box:fill-box;transform-origin:center;transition:transform .2s;animation:nb 5s infinite}
+@keyframes nb{0%,92%,100%{scale:1}95%{scale:1 .08}}
+.m-wow .e{transform:scale(1.25)}.m-happy .e,.m-love .e{transform:scaleY(.55)}
+.ch{fill:#ff5c7a;opacity:0;transition:opacity .3s}.m-happy .ch,.m-love .ch{opacity:.8}
+.spk{transform-box:fill-box;transform-origin:center;animation:sp 3.2s ease-in-out infinite}
+@keyframes sp{50%{scale:1.3;rotate:25deg}}
+.m-think .spk{animation-duration:.7s}
+#np{position:absolute;right:0;bottom:84px;width:min(390px,calc(100vw - 32px));height:min(580px,calc(100dvh - 130px));display:flex;flex-direction:column;border:1px solid var(--bd);border-radius:1.5rem;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:hidden;transform-origin:100% 100%;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#np[hidden],#nn[hidden]{display:none}
+#np:not([hidden]),#nn:not([hidden]){animation:po .3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes po{from{opacity:0;scale:.92;translate:0 12px}}
+.nh{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;border-bottom:1px solid var(--bd)}
+.nh .face{width:64px;height:64px;flex:none;cursor:pointer}
+.nh>div{flex:1;min-width:0}.nh b{display:block;font-size:1.05rem}.nh small{color:var(--mut)}
+.nh .b{padding:.35rem .65rem}
+#nlog{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+.nm{max-width:88%;padding:.6rem .9rem;border-radius:1.1rem;white-space:pre-line;overflow-wrap:anywhere;border:1px solid var(--bd);background:var(--card)}
+.nm.u{align-self:flex-end;background:var(--ac);color:var(--acf);border-color:var(--ac);border-bottom-right-radius:.3rem}
+.nm.a{align-self:flex-start;border-bottom-left-radius:.3rem}
+.na{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem}.na .b{font-size:.85rem;padding:.35rem .8rem}
+.dots i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--mut);animation:dt 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dt{40%{translate:0 -5px}}
+#nch{display:flex;gap:.4rem;padding:.2rem 1rem .6rem;overflow-x:auto;flex:none}
+#nch .b{flex:none;font-size:.85rem;padding:.35rem .75rem}
+.nf{display:flex;gap:.5rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--bd)}
+.nf input{flex:1;min-width:0;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:1rem}
+.nf .b{background:var(--ac);color:var(--acf);border-color:var(--ac)}
+#nn{position:absolute;right:4px;bottom:80px;width:max-content;max-width:230px;padding:.55rem .9rem;border:1px solid var(--bd);border-radius:1.1rem 1.1rem .3rem 1.1rem;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer}
+#nl{width:76px;height:76px}
+#np{bottom:92px;height:min(580px,calc(100vh - 140px));height:min(580px,calc(100dvh - 140px))}
+#nn{bottom:88px;width:max-content;max-width:min(280px,calc(100vw - 40px))}
+.nh small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#nlog{overscroll-behavior:contain}
+#nch{scrollbar-width:none}#nch::-webkit-scrollbar{display:none}
+.e{animation:none}
+.face{animation:fl 4.2s ease-in-out infinite}
+@keyframes fl{0%,100%{translate:0 0;rotate:-1.5deg}50%{translate:0 -3px;rotate:1.5deg}}
+.hd circle{transform-box:fill-box;transform-origin:50% 100%;animation:bt 3.6s ease-in-out infinite}
+@keyframes bt{50%{scale:1.03 .97}}
+.m-talk .hd{animation:tb .42s ease-in-out infinite}
+@keyframes tb{50%{translate:0 -2px;rotate:2deg}}
+.rg{fill:none;stroke:var(--ac);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
+.m-talk .rg{animation:rg .8s ease-out infinite}
+@keyframes rg{from{opacity:.55;scale:1}to{opacity:0;scale:1.4}}
+.hand circle{fill:var(--ac)}.hand path{fill:none;stroke:var(--ac);stroke-width:3.6;stroke-linecap:round}
+.hand{opacity:0;transform-box:view-box;transform-origin:91px 84px;transition:opacity .25s}
+.hi .hand{opacity:1;animation:wv .5s ease-in-out infinite alternate}
+@keyframes wv{from{rotate:-18deg}to{rotate:24deg}}
+.face[data-bk] .e{transform:scaleY(.08)}
+.face[data-wk] .e+.e{transform:scaleY(.08)}
+@media(prefers-reduced-motion:reduce){#nusa *{animation:none!important;transition:none!important}}
+</style>
+<div id="nusa">
+<div id="nn" hidden role="status"></div>
+<div id="np" role="dialog" aria-label="Nexus" hidden>
+<div class="nh"><div><b>Nexus</b><small id="ns"></small></div><button class="b" id="nv" aria-pressed="false">🔇</button><button class="b" id="nc">✕</button></div>
+<div id="nlog" role="log" aria-live="polite"></div>
+<div id="nch"></div>
+<div class="nf"><input id="ni" autocomplete="off" maxlength="200"><button class="b" id="ng"></button></div>
+</div>
+<button class="b" id="nl" aria-expanded="false"></button>
+</div>
+<script>
+(()=>{
+const q=s=>document.querySelector(s),H=document.documentElement,L=()=>T[lang],
+MO={idle:'M40 68Q50 75 60 68',happy:'M37 64Q50 82 63 64Z',love:'M36 63Q50 83 64 63Z',wow:'M45 68a5 7 0 1 0 10 0a5 7 0 1 0-10 0Z',think:'M42 71Q48 67 54 70T60 69',sorry:'M39 72Q50 62 61 72',listen:'M42 68Q50 72 58 68',talk:'M41 66Q50 78 59 66Z',t1:'M42 65Q50 80 58 65Z',t2:'M43 67Q50 73 57 67Z',t3:'M46 66a4 5 0 1 0 8 0a4 5 0 1 0-8 0Z',t4:'M44 68Q50 70 56 68Z'},
+FACE='<svg class="face m-idle" viewBox="0 0 100 100" aria-hidden="true"><circle class="rg" cx="50" cy="56" r="38"/><path class="spk" d="M50 0Q52 7 60 9Q52 11 50 18Q48 11 40 9Q48 7 50 0Z"/><g class="hd"><circle cx="50" cy="56" r="38"/><path class="br bl" d="M27 39H43"/><path class="br bq" d="M57 39H73"/><g class="ey"><ellipse class="e" cx="36" cy="53" rx="5" ry="7"/><ellipse class="e" cx="64" cy="53" rx="5" ry="7"/></g><ellipse class="ch" cx="25" cy="67" rx="6" ry="3.5"/><ellipse class="ch" cx="75" cy="67" rx="6" ry="3.5"/><path class="mo" d="M40 68Q50 75 60 68"/></g><g class="hand"><circle cx="91" cy="74" r="7"/><path d="M87 68L85 59M91 66L91 56M95 68L97 59"/></g></svg>',
+W={id:{open:'Buka asisten Nexus',close:'Tutup',voice:'Suara jawaban',ph:'Tulis pertanyaanmu…',send:'Kirim',st:{idle:'Siap membantu',think:'Sedang mencari jawaban…',talk:'Sedang menjawab…',listen:'Mendengarkan…'},intro:'Halo, namaku Nexus, aku asisten AI kamu! Ada yang mau ditanyakan soal sekolah?',
+hi:n=>'Halo'+(n?', '+n:'')+'! Namaku Nexus, aku asisten AI kamu. Tanya soal pendaftaran, biaya, jurusan, kegiatan, atau kontak sekolah ya.',
+ty:'Sama-sama! Kalau masih ada yang ingin ditanyakan, aku di sini.',me:'Aku Nexus, asisten AI SMK Nusantara. Aku bisa menjawab soal pendaftaran, biaya, beasiswa, jurusan, kegiatan, jadwal, dan kontak sekolah.',bye:'Sampai jumpa! Semoga kita bertemu di SMK Nusantara.',
+nice:n=>'Senang kenal denganmu, '+n+'! Mau mulai dari pendaftaran atau jurusan?',no:'Maaf, aku belum paham pertanyaannya. Coba tanya soal pendaftaran, biaya, jurusan, kegiatan, atau kontak. Untuk hal lain, hubungi sekolah langsung.',
+sw:'Oke, kita ganti ke bahasa Indonesia!',poke:['Hihi, geli!','Eh, ada apa?','Aku di sini kok.','Waduh, jangan digelitik terus!','Wah, kaget!'],o:'Buka',
+chips:['Cara mendaftar','Berapa biaya sekolah?','Pilihan jurusan','Ada beasiswa?','Kegiatan dan ekskul','Kontak sekolah']},
+en:{open:'Open the Nexus assistant',close:'Close',voice:'Spoken answers',ph:'Type your question…',send:'Send',st:{idle:'Ready to help',think:'Looking for an answer…',talk:'Answering…',listen:'Listening…'},intro:'Hi, my name is Nexus, I’m your AI assistant! Anything you’d like to know about the school?',
+hi:n=>'Hi'+(n?', '+n:'')+'! My name is Nexus, I’m your AI assistant. Ask me about enrollment, fees, majors, activities or contacts.',
+ty:'You’re welcome! I’m here if you have more questions.',me:'I’m Nexus, the AI assistant of SMK Nusantara. I can answer questions about enrollment, fees, scholarships, majors, activities, the schedule and contacts.',bye:'See you! Hope to meet you at SMK Nusantara.',
+nice:n=>'Nice to meet you, '+n+'! Want to start with enrollment or majors?',no:'Sorry, I didn’t get that. Try asking about enrollment, fees, majors, activities or contacts. For anything else, please contact the school directly.',
+sw:'Okay, switching to English!',poke:['Hehe, that tickles!','Oh, what’s up?','I’m right here.','Whoa, stop tickling me!','Wow, you surprised me!'],o:'Open',
+chips:['How do I enroll?','How much is tuition?','Which majors are there?','Are there scholarships?','Activities and clubs','Contact the school']}},
+N={'#jurusan':'nJur','#hubungi':'nHub','#layanan':'nLay','#kegiatan':'nKeg','#jadwal':'nJad'},
+I=[['hi','halo|hai|hallo|hello|hey|selamat|good morning|good evening|hi\\b','happy'],
+['ty','terima kasih|makasih|thanks|thank|thx','love'],
+['me','siapa kamu|kamu siapa|siapa nama|namamu|who are you|your name|bisa apa|what can you do|help|bantu','happy'],
+['bye','dadah|bye|sampai jumpa|see you|goodbye','happy'],
+[1,'daftar|mendaftar|pendaftaran|registrasi|enroll|register|apply|sign up|link|cara masuk','happy',['reg','#hubungi']],
+[2,'beasiswa|keringanan|bantuan biaya|scholarship|fee relief|assistance','wow',['reg']],
+[3,'syarat|berkas|dokumen|ijazah|requirement|document|certificate','think',['reg']],
+[4,'tutup|batas|gelombang|deadline|close|closing|wave|kuota|quota|kapan daftar|when does','think',['reg']],
+[5,'biaya|spp|uang pangkal|bayar|harga|seragam|mahal|tuition|fee|cost|price|pay|uniform','think',['reg']],
+[6,'tes|test|ujian|wawancara|seleksi|exam|interview|entrance','think'],
+[7,'pilih jurusan|memilih jurusan|cocok|bingung|rekomendasi|choose|recommend|fit','happy',['#jurusan']],
+[8,'pkl|magang|kerja|bursa|penyaluran|karier|karir|internship|job|career|placement|work','wow',['#layanan']],
+[9,'laptop|komputer sendiri|perangkat|own device|computer','happy'],
+[11,'kontak|hubungi|telepon|telp|wa\\b|whatsapp|email|surel|alamat|nomor|contact|phone|call|address','happy',['#hubungi']],
+['maj','jurusan|program|tkj|rpl|dkv|jaringan|perangkat lunak|gim\\b|desain|major|network|software|game|design','happy',['#jurusan']],
+['svc','layanan|fasilitas|lab|service|facilit|konseling|counsel','happy',['#layanan']],
+['res','prestasi|juara|award|achievement|statistik|bukti|results|mitra industri|partner','wow'],
+['sch','jadwal|agenda|kalender|bulan|schedule|calendar|timeline','happy',['#jadwal']],
+['act','kegiatan|ekskul|ekstrakurikuler|extracurricular|activit|club|robot|futsal|basket|pramuka|scout|band|hackathon|coding|contest|pameran|expo|kunjungan|visit','wow',['#kegiatan']]],
+AK=['hackathon|coding|contest','robot|iot','pramuka|scout|leadership|kepemimpinan','futsal|basket|olahraga|sport','band|musik|music|studio|seni|art|video','kunjungan|visit|pameran|expo'],
+R=k=>new RegExp('\\b(?:'+k+')\\w*','g'),
+np=q('#np'),nl=q('#nl'),nn=q('#nn'),lg=q('#nlog'),ni=q('#ni'),ns=q('#ns'),ch=q('#nch'),nv=q('#nv');
+let nm='',fin=0,busy=0,mt,sT,fh=0,ft=0,pend=0,introd=0,lastP=0,rf=0,pe,pk=0;
+const tts=!!window.speechSynthesis;let sp=LS('nxm')!='1';
+const rm=()=>H.dataset.motion=='reduce'||matchMedia('(prefers-reduced-motion:reduce)').matches,
+faces=()=>[...document.querySelectorAll('#nusa .face')],
+scr=()=>lg.scrollTo({top:lg.scrollHeight}),
+VZ=['t1','t2','t3'],
+mouth=k=>faces().forEach(f=>f.querySelector('.mo').setAttribute('d',MO[k]||MO.idle)),
+fine=()=>matchMedia('(pointer:fine)').matches;
+function setMood(m,x){faces().forEach(f=>f.setAttribute('class','face m-'+m+(x?' '+x:'')));mouth(m)}
+function back(ms){clearTimeout(mt);mt=setTimeout(()=>{if(!busy)setMood('idle')},ms)}
+function flash(m,ms,x){if(busy)return;setMood(m,x);back(ms)}
+function st(k,ms){clearTimeout(sT);ns.textContent=W[lang].st[k]||k;if(ms)sT=setTimeout(()=>{if(!busy)st('idle')},ms)}
+function add(c,t){const d=document.createElement('div');d.className='nm '+c;if(t)d.textContent=t;lg.append(d);scr();return d}
+function speak(t){if(!sp||!tts)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/[•\n]/g,'. '));u.lang=lang=='id'?'id-ID':'en-US';u.rate=1.03;u.pitch=1.2;u.onerror=e=>{if(e.error=='not-allowed')pend=t};speechSynthesis.speak(u)}catch(e){}}
+function stopFlap(){clearInterval(fh);clearTimeout(ft);fh=ft=0}
+function flap(ms){stopFlap();busy=1;clearTimeout(mt);setMood('talk','hi');fh=setInterval(()=>mouth(VZ[Math.random()*3|0]),130);ft=setTimeout(()=>{stopFlap();busy=0;setMood('happy');back(2500)},ms)}
+function type(el,tx,mood,x,cb){stopFlap();let i=0,h=0;const rate=rm()?tx.length:(sp&&tts?Math.max(.5,tx.length/200):Math.max(1,tx.length/60)),
+end=()=>{clearInterval(h);fin=0;el.textContent=tx;busy=0;setMood(mood,x);back(3500);st('idle');cb&&cb();scr()};
+busy=1;clearTimeout(mt);st('talk');speak(tx);setMood('talk',x);
+h=setInterval(()=>{i+=rate;const k=Math.floor(i);el.textContent=tx.slice(0,k);mouth(/[\s,.!?;:]/.test(tx[k-1]||' ')?'t4':VZ[Math.random()*3|0]);scr();if(k>=tx.length)end()},34);fin=end}
+function blink(){faces().forEach(f=>f.dataset.bk=1);setTimeout(()=>faces().forEach(f=>delete f.dataset.bk),120)}
+function acts(d,a){if(!a.length)return;const c=document.createElement('div');c.className='na';a.forEach(x=>{let e;if(x=='reg'){e=document.createElement('a');e.href=q('#reg').href;e.target='_blank';e.rel='noopener';e.textContent=L().reg}else{e=document.createElement('button');const g=x.startsWith('gal:'),s=g?'#kegiatan':x;e.textContent=W[lang].o+' '+L()[N[s]];e.onclick=()=>{if(g&&typeof go=='function')go(+x.slice(4),1);q(s).scrollIntoView({behavior:H.dataset.motion=='reduce'?'auto':'smooth'});if(innerWidth<640)tog(0)}}e.className='b';c.append(e)});d.append(c);scr()}
+function ans(raw){const t=raw.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu,' '),l=L(),w=W[lang],m=raw.match(/(?:namaku|nama saya|panggil (?:aku|saya)|my name is|call me)\s+(\p{L}+)/iu);
+if(m){nm=m[1][0].toUpperCase()+m[1].slice(1);return[w.nice(nm),'happy',[]]}
+if(lang=='id'&&/\b(english|inggris)\b/.test(t)){setLang('en');return[W.en.sw,'happy',[]]}
+if(lang=='en'&&/\b(indonesia|indonesian)\b/.test(t)){setLang('id');return[W.id.sw,'happy',[]]}
+let b=null,s=0;for(const x of I){const k=t.match(R(x[1])),v=k?k.join('').length:0;if(v>s){s=v;b=x}}
+if(!b)return[w.no,'sorry',['#hubungi']];
+const id=b[0];let a=(b[3]||[]).slice(),r;
+if(typeof id=='number')r=l['a'+id];
+else if(id=='hi')r=w.hi(nm);else if(id=='ty')r=w.ty;else if(id=='me')r=w.me;else if(id=='bye')r=w.bye;
+else if(id=='maj')r=l.jH+':\n'+[1,2,3].map(i=>'• '+l['m'+i+'t']+' ('+l['m'+i+'a']+'; '+l['m'+i+'b']+')').join('\n');
+else if(id=='svc')r=l.lH+':\n'+[1,2,3,4].map(i=>'• '+l['s'+i+'t']+': '+l['s'+i+'p']).join('\n');
+else if(id=='res')r=l.pH+':\n95% '+l.p1+'\n50+ '+l.p2+'\n200+ '+l.p3;
+else if(id=='sch')r=l.kjH+':\n'+[1,2,3,4,5,6].map(i=>'• '+l['mo'+i]+': '+l['ev'+i]).join('\n')+'\n'+l.kjP;
+else{const i=AK.findIndex(k=>R(k).test(t));if(i<0)r=l.a10;else{const e=A[lang][i];r=e[0]+' ('+e[1]+')\n'+e[2]+'\n'+e[3];a=['gal:'+i]}}
+return[r,b[2],a]}
+function ask(x){x=x.trim();if(!x)return;fin&&fin();stopFlap();clearTimeout(mt);ni.value='';add('u',x);const[r,m,a]=ans(x),d=add('a');
+d.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';busy=1;setMood('think');st('think');
+let tm=0;const go2=()=>{clearTimeout(tm);d.textContent='';type(d,r,m,'',()=>acts(d,a))};
+tm=setTimeout(go2,rm()?0:700);fin=()=>{go2();fin&&fin()}}
+function tog(o){np.hidden=!o;nl.setAttribute('aria-expanded',!!o);nn.hidden=true;if(o){if(!lg.children.length)type(add('a'),W[lang].hi(nm),'happy','hi');else flash('happy',1500);scr();if(fine())ni.focus({preventScroll:true})}else nl.focus()}
+function ui(){const w=W[lang];nl.setAttribute('aria-label',w.open);q('#nc').setAttribute('aria-label',w.close);nv.setAttribute('aria-label',w.voice);ni.placeholder=w.ph;ni.setAttribute('aria-label',w.ph);q('#ng').textContent=w.send;if(!busy)st('idle');ch.innerHTML='';w.chips.forEach(t=>{const b=document.createElement('button');b.className='b';b.textContent=t;b.onclick=()=>ask(t);ch.append(b)})}
+function intro(){if(introd||!np.hidden)return;introd=1;add('a',W[lang].hi(nm));nn.textContent='';nn.hidden=false;type(nn,W[lang].intro,'happy','hi',()=>setTimeout(()=>{nn.hidden=true},9000))}
+function unlock(){if(!pend)return;const t=pend;pend=0;if(!sp)return;flap(Math.min(9000,t.length*65));speak(t)}
+nl.innerHTML=FACE;q('.nh').insertAdjacentHTML('afterbegin',FACE);ui();setMood('idle');
+nl.onclick=()=>tog(np.hidden);q('#nc').onclick=()=>tog(0);nn.onclick=()=>tog(1);nl.onmouseenter=()=>flash('happy',1100);
+q('#ng').onclick=()=>{ask(ni.value);if(fine())ni.focus()};
+ni.addEventListener('keydown',e=>{if(e.key=='Enter'&&!e.isComposing){e.preventDefault();ask(ni.value)}});
+ni.addEventListener('input',()=>{if(busy)return;setMood('listen');st('listen');back(1400);clearTimeout(sT);sT=setTimeout(()=>{if(!busy)st('idle')},1400)});
+np.addEventListener('keydown',e=>{e.stopPropagation();if(e.key=='Escape')tog(0)});
+ch.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ch.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
+nv.textContent=sp?'🔊':'🔇';nv.setAttribute('aria-pressed',sp);
+nv.onclick=()=>{sp=!sp;LS('nxm',sp?'0':'1');nv.setAttribute('aria-pressed',sp);nv.textContent=sp?'🔊':'🔇';if(!sp&&tts)speechSynthesis.cancel()};
+q('.nh .face').onclick=()=>{pk++;if(busy)return;setMood(pk%5?'love':'wow');st(W[lang].poke[pk%5],2000);back(2000)};
+new MutationObserver(ui).observe(H,{attributes:true,attributeFilter:['lang']});
+['click','keydown','touchend'].forEach(ev=>addEventListener(ev,unlock,{capture:true,passive:true}));
+addEventListener('pointermove',e=>{pe=e;lastP=Date.now();if(rf||rm())return;rf=1;requestAnimationFrame(()=>{rf=0;faces().forEach(f=>{const r=f.getBoundingClientRect(),dx=pe.clientX-r.x-r.width/2,dy=pe.clientY-r.y-r.height/2,d=Math.hypot(dx,dy)||1,k=Math.min(1,d/160)*3.2;f.style.setProperty('--ex',(dx/d*k).toFixed(1)+'px');f.style.setProperty('--ey',(dy/d*k).toFixed(1)+'px')})})});
+(function bl(){setTimeout(()=>{blink();if(Math.random()<.25)setTimeout(blink,230);bl()},1800+Math.random()*3200)})();
+(function gl(){setTimeout(()=>{if(!busy&&Date.now()-lastP>2500)faces().forEach(f=>{f.style.setProperty('--ex',(Math.random()*6-3).toFixed(1)+'px');f.style.setProperty('--ey',(Math.random()*4-2).toFixed(1)+'px')});gl()},1400+Math.random()*2600)})();
+(function mi(){setTimeout(()=>{if(!busy&&!document.hidden){const k=Math.random()*4|0;if(!k){faces().forEach(f=>f.dataset.wk=1);flash('happy',900);setTimeout(()=>faces().forEach(f=>delete f.dataset.wk),700)}else flash(['wow','think','happy'][k-1],1300)}mi()},6000+Math.random()*5000)})();
+setTimeout(intro,1200);
+})();
+</script>
+
 </body>
 </html>
